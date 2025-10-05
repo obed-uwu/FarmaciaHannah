@@ -104,7 +104,7 @@
         .hero {
             background: 
                 linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5)),
-                url('/img/foto.jpg');
+                url('img/foto.jpg');
             background-size: cover;
             background-position: center 10%;
             background-repeat: no-repeat;
@@ -214,7 +214,7 @@
         /* Farmacia Section */
         .farmacia-header {
               height: 300px;
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/img/farmacia.jpg');
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('img/farmacia.jpg');
             background-size: cover;
             background-position: center 10%;
             display: flex;
@@ -285,7 +285,7 @@
         /* Consultorio Section */
         .consultorio-header {
             height: 300px;
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/img/consultorio2.jpg');
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('img/consultorio2.jpg');
             background-size: cover;
             background-position: center;
             display: flex;
