@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Farmacia Hanna - Tu salud es nuestra prioridad</title>
     <style>
-        /* Estilos generales */
+        /* Reset y estilos base */
         * {
             margin: 0;
             padding: 0;
@@ -13,10 +13,19 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
+        :root {
+            --primary: #0d6efd;
+            --secondary: #ffc107;
+            --dark: #212529;
+            --light: #f8f9fa;
+            --gray: #6c757d;
+        }
+        
         body {
-            background-color: #f8f9fa;
+            background-color: var(--light);
             color: #333;
             line-height: 1.6;
+            overflow-x: hidden;
         }
         
         .container {
@@ -28,7 +37,7 @@
         
         /* Header y navegación */
         header {
-            background-color: #e7233d;
+            background-color: var(--primary);
             color: white;
             padding: 15px 0;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -49,13 +58,15 @@
             align-items: center;
         }
         
-        .logo h1 {
-            font-size: 1.8rem;
-            margin-left: 10px;
+        .logo-img {
+            height: 50px;
+            width: auto;
+            margin-right: 15px;
         }
         
-        .logo-icon {
-            font-size: 2rem;
+        .logo h1 {
+            font-size: 1.8rem;
+            font-weight: 600;
         }
         
         nav ul {
@@ -80,85 +91,46 @@
             background-color: rgba(255, 255, 255, 0.2);
         }
         
-    .logo-img {
-    height: 50px; /* Ajusta según el tamaño de tu logo */
-    width: auto;
-    margin-right: 15px;
-}
-
-.logo {
-    display: flex;
-    align-items: center;
-}    
-/* Hero Section con imagen local posicionada más abajo */
-.hero {
-    background: 
-        linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5)),
-        url('foto.jpg');
-    background-size: cover;
-    background-position: center 10%; /* Cambiado de "center" a "center 70%" */
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    color: rgb(255, 255, 255);
-    text-align: center;
-    padding: 150px 0 80px;
-    margin-top: 60px;
-    position: relative;
-    overflow: hidden;
-    min-height: 70vh;
-    display: flex;
-    align-items: center;
-}
-
-.hero-content {
-    width: 100%;
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 0 20px;
-    position: relative;
-    z-index: 2;
-}
-
-/* Media queries para mejor adaptabilidad */
-@media (max-width: 768px) {
-    .hero {
-        background-attachment: scroll;
-        background-position: center 60%; /* Ajuste para móviles */
-        padding: 120px 0 60px;
-        min-height: 60vh;
-    }
-}
-
-@media (max-width: 480px) {
-    .hero {
-        background-position: center 50%; /* Ajuste para móviles pequeños */
-        padding: 100px 0 40px;
-        min-height: 50vh;
-    }
-}
-
-@media (max-width: 480px) {
-    .hero {
-        padding: 100px 0 40px;
-        min-height: 50vh;
-    }
-}
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
         
-        /* Estilo de respaldo en caso de que la imagen no cargue */
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #fdfeff;
-            z-index: -1;
+        .menu-toggle span {
+            height: 3px;
+            width: 25px;
+            background: white;
+            margin-bottom: 4px;
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: 
+                linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5)),
+                url('foto.jpg');
+            background-size: cover;
+            background-position: center 70%;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: white;
+            text-align: center;
+            padding: 180px 0 100px;
+            margin-top: 60px;
+            position: relative;
+            overflow: hidden;
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
         }
         
         .hero-content {
+            width: 100%;
             max-width: 800px;
             margin: 0 auto;
+            padding: 0 20px;
             position: relative;
             z-index: 2;
         }
@@ -173,11 +145,12 @@
             font-size: 1.3rem;
             margin: 0 auto 30px;
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+            max-width: 700px;
         }
         
         .btn {
             display: inline-block;
-            background-color: #ffc107;
+            background-color: var(--secondary);
             color: #333;
             padding: 14px 30px;
             border-radius: 30px;
@@ -208,7 +181,7 @@
         
         .section-title h2 {
             font-size: 2.2rem;
-            color: #fd0d0d;
+            color: var(--primary);
             margin-bottom: 15px;
             position: relative;
             display: inline-block;
@@ -219,10 +192,15 @@
             position: absolute;
             width: 70px;
             height: 3px;
-            background-color: #0d6efd;
+            background-color: var(--primary);
             bottom: -10px;
             left: 50%;
             transform: translateX(-50%);
+        }
+        
+        .section-title p {
+            color: var(--gray);
+            font-size: 1.1rem;
         }
         
         /* Farmacia Section */
@@ -251,7 +229,7 @@
             align-items: center;
             justify-content: center;
             font-size: 3rem;
-            color: #0d6efd;
+            color: var(--primary);
         }
         
         .farmacia-content {
@@ -260,7 +238,7 @@
         
         .farmacia-content h3 {
             margin-bottom: 15px;
-            color: #0d6efd;
+            color: var(--primary);
         }
         
         /* Consultorio Section */
@@ -288,7 +266,7 @@
         
         .consultorio-img {
             height: 200px;
-            background-color: #0d6efd;
+            background-color: var(--primary);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -302,7 +280,7 @@
         
         .consultorio-content h3 {
             margin-bottom: 15px;
-            color: #0d6efd;
+            color: var(--primary);
         }
         
         /* Servicios Section */
@@ -328,13 +306,13 @@
         
         .servicio-icon {
             font-size: 2.5rem;
-            color: #0d6efd;
+            color: var(--primary);
             margin-bottom: 20px;
         }
         
         /* Contacto Section */
         .contacto {
-            background-color: #e7233d;
+            background-color: var(--primary);
             color: white;
         }
         
@@ -386,7 +364,7 @@
         }
         
         .contacto-form button {
-            background-color: #ffc107;
+            background-color: var(--secondary);
             color: #333;
             border: none;
             padding: 12px 25px;
@@ -402,7 +380,7 @@
         
         /* Footer */
         footer {
-            background-color: #212529;
+            background-color: var(--dark);
             color: white;
             padding: 40px 0 20px;
         }
@@ -417,7 +395,7 @@
         .footer-col h4 {
             margin-bottom: 20px;
             font-size: 1.2rem;
-            color: #ffc107;
+            color: var(--secondary);
         }
         
         .footer-col ul {
@@ -446,37 +424,101 @@
             font-size: 0.9rem;
         }
         
-        /* Responsive */
+        /* ========== RESPONSIVE DESIGN ========== */
+        
+        /* Tablets */
+        @media (max-width: 992px) {
+            .hero h2 {
+                font-size: 2.4rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+        }
+        
+        /* Móviles grandes */
         @media (max-width: 768px) {
             .header-container {
-                flex-direction: column;
+                flex-wrap: wrap;
+            }
+            
+            .menu-toggle {
+                display: flex;
+            }
+            
+            nav {
+                width: 100%;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.5s ease;
+            }
+            
+            nav.active {
+                max-height: 300px;
             }
             
             nav ul {
-                margin-top: 15px;
-                flex-wrap: wrap;
-                justify-content: center;
+                flex-direction: column;
+                width: 100%;
+                padding: 20px 0;
             }
             
             nav ul li {
-                margin: 5px;
+                margin: 10px 0;
+                text-align: center;
             }
             
             .hero {
-                padding: 150px 0 80px;
                 background-attachment: scroll;
+                background-position: center 60%;
+                padding: 150px 0 80px;
+                min-height: 60vh;
             }
             
             .hero h2 {
-                font-size: 2.2rem;
+                font-size: 2rem;
             }
             
             .hero p {
                 font-size: 1.1rem;
             }
+            
+            section {
+                padding: 60px 0;
+            }
+            
+            .section-title {
+                margin-bottom: 40px;
+            }
+            
+            .btn {
+                padding: 12px 25px;
+                font-size: 1rem;
+            }
         }
         
-        @media (max-width: 480px) {
+        /* Móviles pequeños */
+        @media (max-width: 576px) {
+            .logo h1 {
+                font-size: 1.5rem;
+            }
+            
+            .logo-img {
+                height: 40px;
+                margin-right: 10px;
+            }
+            
+            .hero {
+                background-position: center 50%;
+                padding: 120px 0 60px;
+                min-height: 50vh;
+            }
+            
             .hero h2 {
                 font-size: 1.8rem;
             }
@@ -485,42 +527,86 @@
                 font-size: 1rem;
             }
             
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .farmacia-grid,
+            .consultorio-grid,
+            .servicios-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .contacto-grid {
+                gap: 30px;
+            }
+        }
+        
+        /* Móviles muy pequeños */
+        @media (max-width: 400px) {
+            .container {
+                width: 95%;
+            }
+            
+            .hero {
+                padding: 100px 0 40px;
+            }
+            
+            .hero h2 {
+                font-size: 1.6rem;
+            }
+            
             .btn {
-                padding: 12px 25px;
-                font-size: 1rem;
+                display: block;
+                width: 100%;
+                margin-bottom: 10px;
+            }
+            
+            .hero-buttons .btn {
+                margin-left: 0 !important;
             }
         }
     </style>
 </head>
 <body>
     <!-- Header -->
-<!-- Header -->
-<header>
-    <div class="container header-container">
-        <div class="logo">
-            <img src="logo.png" alt="Logo Farmacia Hannah" class="logo-img">
-            <h1>Farmacia Hannah</h1>
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <img src="logo.png" alt="Logo Farmacia Hanna" class="logo-img">
+                <h1>Farmacia Hanna</h1>
+            </div>
+            <div class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#farmacia">Farmacia</a></li>
+                    <li><a href="#consultorio">Consultorio</a></li>
+                    <li><a href="#servicios">Servicios</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </nav>
         </div>
-        <nav>
-            <ul>
-                <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#farmacia">Farmacia</a></li>
-                <li><a href="#consultorio">Consultorio</a></li>
-                <li><a href="#servicios">Servicios</a></li>
-                <li><a href="#contacto">Contacto</a></li>
-            </ul>
-        </nav>
-    </div>
-</header>
+    </header>
 
     <!-- Hero Section -->
     <section class="hero" id="inicio">
         <div class="container hero-content">
             <h2>Tu salud es nuestra prioridad</h2>
-            <p>En Farmacia Hannah nos preocupamos por tu bienestar. Ofrecemos productos farmacéuticos de calidad y servicios de consultorio medico Ginecologia y Obstetrica.</p>
+            <p>En Farmacia Hanna nos preocupamos por tu bienestar. Ofrecemos productos farmacéuticos de calidad y servicios de consultorio de ginecología.</p>
             <div class="hero-buttons">
-                <a href="#farmacia" class="btn">Farmacia</a>
-                <a href="#consultorio" class="btn" style="background-color: white; color: #0d6efd; margin-left: 15px;">Consultorio</a>
+                <a href="#farmacia" class="btn">Ver Productos</a>
+                <a href="#consultorio" class="btn" style="background-color: white; color: #0d6efd; margin-left: 15px;">Agendar Cita</a>
             </div>
         </div>
     </section>
@@ -627,7 +713,7 @@
     <section class="contacto" id="contacto">
         <div class="container">
             <div class="section-title">
-                <h3>Contáctanos</h3>
+                <h2>Contáctanos</h2>
                 <p>Estamos aquí para ayudarte</p>
             </div>
             <div class="contacto-grid">
@@ -717,5 +803,39 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        // Menú móvil
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.getElementById('menuToggle');
+            const mainNav = document.getElementById('mainNav');
+            
+            menuToggle.addEventListener('click', function() {
+                mainNav.classList.toggle('active');
+            });
+            
+            // Cerrar menú al hacer clic en un enlace
+            const navLinks = document.querySelectorAll('nav a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    mainNav.classList.remove('active');
+                });
+            });
+            
+            // Smooth scroll para enlaces internos
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        window.scrollTo({
+                            top: target.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
